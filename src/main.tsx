@@ -13,6 +13,9 @@ import RequireAuth from './components/RequireAuth.tsx';
 import ShowPost, { loader as showPostLoader } from './routes/ShowPost.tsx';
 import { action as createCommentAction } from './components/CommentForm.tsx';
 import { action as voteAction } from './components/Vote.tsx';
+import { action as DeleteComment } from './components/Comment.tsx'
+import { action as DeletePost } from './routes/ShowPost.tsx'
+import EditPost, { action as EditPostAction } from './routes/EditPost.tsx';
 
 const router = createBrowserRouter([
   {
@@ -61,6 +64,20 @@ const router = createBrowserRouter([
           {
             path: "/posts/:postId/vote",
             action: voteAction
+          },
+          {
+            path: '/posts/:postid/comments/:commentid',
+            action: DeleteComment
+          },
+          {
+            path: '/posts/delete/:postid',
+            action: DeletePost
+          },
+          {
+            path: '/posts/:id/edit', 
+            element: <EditPost />,
+            loader: showPostLoader,
+            action: EditPostAction
           }
         ]
       },

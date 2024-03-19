@@ -13,7 +13,6 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
             'Accepts': 'application/json'
         }
     })
-
     const backendResponse = await response.json() as { posts: Post[], totalPages: number };
 
     return { page, ...backendResponse }
